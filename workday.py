@@ -94,7 +94,7 @@ def main():
     wait.until(ec.element_to_be_clickable((By.XPATH, "//button[@title='Select Week']"))).click()
     wait.until(ec.element_to_be_clickable((By.XPATH, "//input[contains(@id, 'input')]"))).send_keys(str(first_day_of_week.month).zfill(2) + str(first_day_of_week.day).zfill(2) + str(first_day_of_week.year))
     wait.until(ec.element_to_be_clickable((By.XPATH, "//span[@title='OK']"))).click()
-    wait.until(ec.element_to_be_clickable((By.XPATH, "//button[@title='Enter Time']"))).click()
+    wait.until(ec.element_to_be_clickable((By.XPATH, "//button[@title='Actions']"))).click()
     sleep(1)
     wait.until(ec.element_to_be_clickable((By.XPATH, "//div[contains(text(), 'Quick Add')]"))).click()
     sleep(2)
