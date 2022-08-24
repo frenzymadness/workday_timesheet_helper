@@ -83,7 +83,7 @@ def main():
 
     br.get('https://rover.redhat.com/apps/')
 
-    link_to_wd = br.find_element_by_xpath("//a[contains(@title, 'Performance & development, career management, onboarding, compensation, and more.')]")
+    link_to_wd = br.find_element("xpath", "//a[contains(@title, 'Performance & development, career management, onboarding, compensation, and more.')]")
     link_to_wd.click()
 
     sleep(3)
@@ -101,25 +101,25 @@ def main():
     wait.until(ec.element_to_be_clickable((By.XPATH, "//button[@title='Next']"))).click()
     wait.until(ec.element_to_be_clickable((By.XPATH, "//span[@title='Add']"))).click()
     sleep(1)
-    inputs = br.find_elements_by_xpath("//input[@type='text']")
+    inputs = br.find_elements("xpath", "//input[@type='text']")
 
     times = generate_times()
 
     for input, time in zip(inputs[:4], times):
         input.send_keys(time)
 
-    br.find_element_by_xpath("//div[@data-automation-id='selectShowAll']").click()
+    br.find_element("xpath", "//div[@data-automation-id='selectShowAll']").click()
 
-    br.find_element_by_xpath("//div[@title='Break']").click()
+    br.find_element("xpath", "//div[@title='Break']").click()
 
-    days = br.find_elements_by_xpath("//div[@data-automation-id='checkboxPanel']")
+    days = br.find_elements("xpath", "//div[@data-automation-id='checkboxPanel']")
 
     for index, day in enumerate(days[:-2]):
         if index in days_to_skip:
             continue
         day.click()
 
-    br.find_element_by_xpath("//button[@title='OK']").click()
+    br.find_element("xpath", "//button[@title='OK']").click()
 
 
 if __name__ == "__main__":
