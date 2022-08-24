@@ -21,7 +21,7 @@ Feel free to update the scripts to your needs.
 
 Requirements:
 
-1. selenium working with Firefox (geckodriver)
+1. selenium (>4) working with Firefox ([geckodriver](https://github.com/mozilla/geckodriver/releases))
 1. working Kerberos in the browser with a valid ticket
 
 Patches and testers are welcome.
