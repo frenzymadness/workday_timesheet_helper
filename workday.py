@@ -93,7 +93,18 @@ def main():
     wait.until(ec.element_to_be_clickable((By.XPATH, "//button[@title='Global Navigation']"))).click()
     wait.until(ec.element_to_be_clickable((By.XPATH, "//span[text()='Time']"))).click()
     wait.until(ec.element_to_be_clickable((By.XPATH, "//button[@title='Select Week']"))).click()
-    wait.until(ec.element_to_be_clickable((By.XPATH, "//input[contains(@id, 'input')]"))).send_keys(str(first_day_of_week.month).zfill(2) + str(first_day_of_week.day).zfill(2) + str(first_day_of_week.year))
+
+    sleep(2)
+
+    # The new horrible datetime input requires a special handling.
+    # The following section has been a one line before.
+    for placeholder, part in zip(("MM", "DD", "YYYY"), ("month", "day", "year")):
+        element = wait.until(ec.element_to_be_clickable((By.XPATH, f"//input[contains(@placeholder, '{placeholder}')]")))
+        fill = str(getattr(first_day_of_week, part)).zfill(2)
+        for n in fill:
+            element.send_keys(n)
+            sleep(0.1)
+
     wait.until(ec.element_to_be_clickable((By.XPATH, "//span[@title='OK']"))).click()
     wait.until(ec.element_to_be_clickable((By.XPATH, "//span[@title='Actions']"))).click()
     sleep(1)
