@@ -121,7 +121,7 @@ def main():
         input.send_keys(time)
 
     br.find_element("xpath", "//div[@data-automation-id='selectShowAll']").click()
-
+    sleep(0.1)
     br.find_element("xpath", "//div[@title='Break']").click()
 
     days = br.find_elements("xpath", "//div[@data-automation-id='checkboxPanel']")
