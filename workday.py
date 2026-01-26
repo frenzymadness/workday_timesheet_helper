@@ -91,7 +91,7 @@ def main():
     br.switch_to.window(br.window_handles[-1])
 
     wait.until(ec.element_to_be_clickable((By.XPATH, "//button[@title='Global Navigation']"))).click()
-    wait.until(ec.element_to_be_clickable((By.XPATH, "//span[text()='Time']"))).click()
+    wait.until(ec.element_to_be_clickable((By.XPATH, "//a[@aria-label='Time']"))).click()
     wait.until(ec.element_to_be_clickable((By.XPATH, "//button[@title='Select Week']"))).click()
 
     sleep(2)
