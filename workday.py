@@ -9,6 +9,7 @@ from selenium import webdriver
 from selenium.webdriver.support import ui
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.common.action_chains import ActionChains
 
 DAY_START = datetime.strptime('07:00', '%H:%M')
 DAY_START_VARIATION = 60  # in minutes
@@ -90,7 +91,8 @@ def main():
 
     br.switch_to.window(br.window_handles[-1])
 
-    wait.until(ec.element_to_be_clickable((By.XPATH, "//span[contains(text(), 'Personal')]"))).click()
+    personal_span = wait.until(ec.element_to_be_clickable((By.XPATH, "//span[normalize-space(.)='Personal']")))
+    ActionChains(br).move_to_element(personal_span).perform()
     wait.until(ec.element_to_be_clickable((By.XPATH, "//span[normalize-space(.)='Time']"))).click()
     wait.until(ec.element_to_be_clickable((By.XPATH, "//button[@title='Select Week']"))).click()
 
